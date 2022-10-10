@@ -6,7 +6,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 import { CustomInput } from './CustomInput';
 import {names} from './DropdownData'
-
+import ColumnDiagram from './ColumnDiagram/ColumnDiagram';
 
 export default function DropdownComponent() {
 
@@ -20,12 +20,12 @@ export default function DropdownComponent() {
        value 
     );
   };
-
+console.log(currentOption)
   return (
     <div>
     
       <FormControl sx={{width: 300}} variant="standard">
-        <InputLabel id="demo-customized-select-label">Выберите</InputLabel>
+        <InputLabel id="demo-customized-select-label" >Выберите</InputLabel>
         <Select
           labelId="demo-customized-select-label"
           id="demo-customized-select"
@@ -43,6 +43,8 @@ export default function DropdownComponent() {
           ))}
         </Select>
       </FormControl>
+
+      <ColumnDiagram currentOption={currentOption}/>
     </div>
   );
 }

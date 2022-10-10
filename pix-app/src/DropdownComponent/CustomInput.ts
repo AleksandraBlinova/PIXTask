@@ -30,8 +30,7 @@ export const CustomInput = styled(InputBase)(({ theme }) => ({
       ].join(','),
       '&:focus': {
         borderRadius: 4,
-        borderColor: '#80bdff',
-        boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+        boxShadow: '0 0 0 0.1rem rgba(0,0,0,.5)',
       },
     },
   }));
