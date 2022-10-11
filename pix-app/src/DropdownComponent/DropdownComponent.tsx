@@ -3,6 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import LinearProgress from '@mui/material/LinearProgress';
 
 import {useGetProductsQuery} from '../ApiRequest/ApiRequest'
 
@@ -49,7 +50,9 @@ console.log(data)
           
         </Select>
       </FormControl>
-     <div className='loading-container'>  { (isLoading) ?  <h1>Loading...</h1> : <p></p> }</div>
+     <div className='loading-container'>  { (isLoading) ?  
+      <LinearProgress />
+     : <p></p> }</div>
     
       <ColumnDiagram currentOption={currentOption}/>
     </div>

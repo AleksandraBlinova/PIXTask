@@ -9,7 +9,7 @@ export const api = createApi({
     }),
     endpoints: (builder) => ({
       getProducts: builder.query<IProduct[], number>({
-        query: (limit=5) => `products/`,
+        query: () => `products/`,
       }),
      
     }),
