@@ -4,9 +4,13 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
+import {useGetProductsQuery} from '../ApiRequest/ApiRequest'
+
 import { CustomInput } from './CustomInput';
 import {names} from './DropdownData'
 import ColumnDiagram from './ColumnDiagram/ColumnDiagram';
+
+import './DropdownComponent.css'
 
 export default function DropdownComponent() {
 
@@ -20,7 +24,8 @@ export default function DropdownComponent() {
        value 
     );
   };
-console.log(currentOption)
+const {data, isLoading, error} = useGetProductsQuery(6);
+console.log(data)
   return (
     <div>
     
@@ -41,9 +46,11 @@ console.log(currentOption)
               {name}
             </MenuItem>
           ))}
+          
         </Select>
       </FormControl>
-
+     <div className='loading-container'>  { (isLoading) ?  <h1>Loading...</h1> : <p></p> }</div>
+    
       <ColumnDiagram currentOption={currentOption}/>
     </div>
   );
