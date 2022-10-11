@@ -54,7 +54,7 @@ console.log(data)
       <LinearProgress />
      : <p></p> }</div>
     
-      <ColumnDiagram currentOption={currentOption}/>
+      <ColumnDiagram currentOption={currentOption} data={data}/>
     </div>
   );
 }

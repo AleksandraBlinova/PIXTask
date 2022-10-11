@@ -10,15 +10,28 @@ const ColumnDiagram = (props: any) => {
   
   const options: Highcharts.Options = {
     title: {
-        text: props.currentOption
+        text: props.currentOption,
     },
-  
+    yAxis: {
+      title: {
+        text: 'Рейтинг' 
+            },
+          
+        },
+    
+    xAxis: {
+      title: {
+        text: 'Модель' 
+            },
+            categories: props.data.products.map(i=>i.title)
+        },
     series: [{
       type: 'column',
-        data: [1, 2, 3]
+      name: 'Рейтинг',
+      data: props.data.products.map(i=>i.rating)
     }]
   };
-
+  console.log(props.data.products.map(i=>i.rating))
   return (
     <div className='column-diagram-container'>  
        <HighchartsReact
