@@ -15,18 +15,18 @@ import './DropdownComponent.css'
 
 export default function DropdownComponent() {
 
-   const [currentOption, setCurrentOption] = React.useState<string>('');
+   const [currentCategory, setCurrentCategory] = React.useState<string>('');
 
-   const handleChange = (event: SelectChangeEvent<typeof currentOption>) => {
+   const handleChange = (event: SelectChangeEvent<typeof currentCategory>) => {
     const {
       target: { value },
     } = event;
-    setCurrentOption(
+    setCurrentCategory(
        value 
     );
   };
 const {data, isLoading, error} = useGetProductsQuery(6);
-console.log(data)
+
   return (
     <div>
     
@@ -35,16 +35,16 @@ console.log(data)
         <Select
           labelId="demo-customized-select-label"
           id="demo-customized-select"
-          value={currentOption}
+          value={currentCategory}
           onChange={handleChange}
           input={<CustomInput />}
         >
            {names.map((name) => (
             <MenuItem
-              key={name}
-              value={name}
+              key={name.id}
+              value={name.category}
             >
-              {name}
+              {name.title}
             </MenuItem>
           ))}
           
@@ -54,7 +54,7 @@ console.log(data)
       <LinearProgress />
      : <p></p> }</div>
     
-      <ColumnDiagram currentOption={currentOption} data={data}/>
+      <ColumnDiagram currentCategory={currentCategory} data={data} isLoading={isLoading}/>
     </div>
   );
 }

@@ -6,11 +6,13 @@ import './ColumnDiagram.css'
 
 
 
-const ColumnDiagram = (props: any) => {
+const ColumnDiagram = (props) => {
   
+ 
   const options: Highcharts.Options = {
+   
     title: {
-        text: props.currentOption,
+       text: props.currentCategory,
     },
     yAxis: {
       title: {
@@ -23,23 +25,25 @@ const ColumnDiagram = (props: any) => {
       title: {
         text: 'Модель' 
             },
-            categories: props.data.products.map(i=>i.title)
+            categories: props.data?.products.filter(i=>i.category==props.currentCategory).map(j=>j.title)
         },
     series: [{
       type: 'column',
       name: 'Рейтинг',
-      data: props.data.products.map(i=>i.rating)
+      data: props.data?.products.filter(i=>i.category==props.currentCategory).map(k=>k.rating) 
     }]
   };
-  console.log(props.data.products.map(i=>i.rating))
+  
+
   return (
-    <div className='column-diagram-container'>  
-       <HighchartsReact
-      highcharts={Highcharts}
-      options={options}
-     
-    />
-    </div>
+     props.data!=undefined && props.isLoading==false ? <div className='column-diagram-container'>  
+    <HighchartsReact
+   highcharts={Highcharts}
+   options={options}
+  
+ />
+ </div> : <></>
+   
   )
 }
 

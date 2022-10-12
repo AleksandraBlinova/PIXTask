@@ -1,6 +1,5 @@
 
   export const names = [
-    'Смартфоны',
-    'Планшеты',
-    
+    {id: 0, title: 'Смартфоны', category: "smartphones"},
+    {id: 1, title: 'Планшеты', category: "laptops"}
   ];
